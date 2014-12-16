@@ -30,6 +30,7 @@ S="${WORKDIR}/${PN}-${GITCRAP}"
 src_prepare() {
 	local SHARED_MINOR=$(get_version_component_range 2)
 	cp "${FILESDIR}/${PN}-1.9.0-memenv-so.patch" "${S}/patch"
+	cp "${FILESDIR}/disable-flock.patch" "${S}/patch"
 	sed -i "s/\(^ SHARED_MINOR =\).*/\1 ${SHARED_MINOR}/" "${S}/patch"
 	epatch "${S}/patch"
 

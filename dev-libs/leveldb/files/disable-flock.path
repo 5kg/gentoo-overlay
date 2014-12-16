@@ -1,0 +1,18 @@
+--- util/env_posix.cc	2013-12-11 02:36:31.000000000 +0800
++++ util/env_posix.cc	2014-12-15 16:26:52.361419586 +0800
+@@ -257,14 +257,7 @@
+ };
+ 
+ static int LockOrUnlock(int fd, bool lock) {
+-  errno = 0;
+-  struct flock f;
+-  memset(&f, 0, sizeof(f));
+-  f.l_type = (lock ? F_WRLCK : F_UNLCK);
+-  f.l_whence = SEEK_SET;
+-  f.l_start = 0;
+-  f.l_len = 0;        // Lock/unlock entire file
+-  return fcntl(fd, F_SETLK, &f);
++  return 0;
+ }
+ 
+ class PosixFileLock : public FileLock {
